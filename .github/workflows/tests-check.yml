@@ -1,0 +1,43 @@
+name: Tests-check
+
+on:
+  push:
+    branches:
+      - '**'
+    tags:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup PHP
+        # Action gives to setup the PHP environment to test application
+        # https://github.com/shivammathur/setup-php
+        uses: shivammathur/setup-php@v2
+        with:
+          # Specify the PHP version
+          php-version: '8.1'
+
+      - name: Installation
+        # Install project
+        run: make install
+
+      - name: Linting
+        # Lint project
+        run: make lint
+
+      - name: Run test & publish code coverage
+        uses: paambaati/codeclimate-action@v3.0.0
+
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          #          CC_TEST_REPORTER_COVERAGE_ENDPOINT: http://sergeiwerty/api/v1/test_reports
+          XDEBUG_MODE: coverage
+
+        with:
+          coverageCommand: make test-coverage
+          coverageLocations: ${{github.workplace}}/build/logs/clover.xml:clover
+          debug: true
