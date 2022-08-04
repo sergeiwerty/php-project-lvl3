@@ -23,6 +23,8 @@ services:
       - "5432:5432"
     env_file:
       - ./pgsql.env
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
   composer:
     build:
       context: ./dockerfiles
