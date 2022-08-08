@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FormController;
+use App\Http\Controllers\UrlController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +14,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-//Route::post('/urls', [FormController::class, store])
+//Route::post('/urls', [UrlController::class, store])
 //    ->name();
 
-Route::resource('urls', FormController::class);
+Route::resource('urls', UrlController::class);

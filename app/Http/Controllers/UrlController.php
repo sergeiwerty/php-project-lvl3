@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
-class FormController extends Controller
+class UrlController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,13 +37,23 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('urls')->insertGetId([
-            'name' => 'something',
-            'created_at' => Carbon::now(),
-//            'updated_at' => Carbon::now()
+        $url = $request->input('url.name');
+
+        $request->validate([
+            'url.name' => 'url|required|max:255|unique:urls,name'
         ]);
 
-        return redirect()->route('welcome');
+//        dump($request->input('url')['name']);
+
+        $id = DB::table('urls')
+            ->insertGetId([
+            'name' =>  $request->input('url.name'),
+            'created_at' => Carbon::now('+03:00'),
+        ]);
+
+        dump($id);
+//        return redirect()->route('urls.show', $id);
+//        return redirect()->route('welcome');
     }
 
     /**
@@ -54,7 +64,15 @@ class FormController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $urlData = DB::table('urls')
+            ->select('*')
+            ->where('id', '=', $id)
+            ->get();
+
+        dump($urlData);
+
+//        return view('url.show', compact($urlData));
     }
 
     /**
