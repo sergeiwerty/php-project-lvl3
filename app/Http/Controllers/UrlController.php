@@ -37,13 +37,11 @@ class UrlController extends Controller
      */
     public function store(Request $request)
     {
-        $url = $request->input('url.name');
+//        $url = $request->input('url.name');
 
         $request->validate([
             'url.name' => 'url|required|max:255|unique:urls,name'
         ]);
-
-//        dump($request->input('url')['name']);
 
         $id = DB::table('urls')
             ->insertGetId([
@@ -51,28 +49,24 @@ class UrlController extends Controller
             'created_at' => Carbon::now('+03:00'),
         ]);
 
-        dump($id);
-//        return redirect()->route('urls.show', $id);
-//        return redirect()->route('welcome');
+        return redirect()->route('urls.show', $id);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show($id)
     {
-
+//
         $urlData = DB::table('urls')
             ->select('*')
             ->where('id', '=', $id)
             ->get();
 
-        dump($urlData);
-
-//        return view('url.show', compact($urlData));
+        return view('url.show', ['urlData' => $urlData->first()]);
     }
 
     /**
