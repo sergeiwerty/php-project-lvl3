@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-    <table class="table">
+    <table class="table border">
         <tbody>
         <tr>
             <th scope="row">ID</th>

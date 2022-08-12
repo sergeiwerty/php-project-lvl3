@@ -17,4 +17,4 @@
             <div><?php echo e($error); ?></div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
-<?php endif; ?><?php /**PATH /var/www/html/resources/views/shared/navbar.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH /home/user/development/php-project-lvl3/php-project-lvl3/resources/views/shared/navbar.blade.php ENDPATH**/ ?>
