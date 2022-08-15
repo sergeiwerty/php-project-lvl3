@@ -25,25 +25,19 @@ class UrlControllerTest extends TestCase
     {
         $id = DB::table('urls')
             ->insertGetId([
-                'name' =>  'https:/www.example.com',
+                'name' =>  'http://example.com/',
                 'created_at' => Carbon::now('+03:00'),
             ]);
-
-        if ($id !== null) {
-            return redirect()->route('urls.show', $id);
-        }
-
-        $id->dd();
 
         $urlData = DB::table('urls')
             ->select('*')
             ->where('id', '=', $id)
-            ->get();
-
-//        $urlData->dd();
+            ->get()
+            ->first();
 
         $response = $this->post(route('urls.store'), (array)$urlData);
-        $response->assertRedirect(route('urls.show'));
+        dump(route('urls.show', $id));
+        $response->assertRedirect(route('urls.show', $id));
         $response->assertSessionHasNoErrors();
 
         $this->assertDatabaseHas('urls', (array)$urlData);

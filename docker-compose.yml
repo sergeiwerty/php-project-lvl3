@@ -17,7 +17,7 @@ services:
       context: ./dockerfiles
       dockerfile: php.dockerfile
     volumes:
-      - .:/var/www/html:delegated
+      - .:/var/www/html
   pgsql:
     image: postgres:13-alpine
     ports:
