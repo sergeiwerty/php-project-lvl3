@@ -11,16 +11,19 @@ return new class extends Migration
      *
      * @return void
      */
-//    public function up('url_checks', function (Blueprint $table)
-//    {
-//        $table->id();
-//        $table->integer('url_id');
-//        $table->integer('status_code');
-//        $table->text('h1');
-//        $table->text('title');
-//        $table->text('description');
-//        $table->timestamp('created_at');
-//    }
+    public function up()
+    {
+        Schema::create('url_checks', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('url_id');
+            $table->foreign('url_id')->references('id')->on('urls');
+            $table->integer('status_code')->nullable();
+            $table->text('h1')->nullable();
+            $table->text('title')->nullable();
+            $table->text('description')->nullable();
+            $table->timestamp('created_at');
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::drop('url_checks');
+            Schema::drop('url_checks');
     }
 };

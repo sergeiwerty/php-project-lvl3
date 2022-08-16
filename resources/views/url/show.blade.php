@@ -16,4 +16,35 @@
         </tr>
         </tbody>
     </table>
+    <h1>Проверки</h1>
+    <form action="/urls/{{ $urlData->id }}/checks" method="POST">
+        @csrf
+        <input class="btn btn-primary" type="submit" value="Запустить проверку">
+    </form>
+    @if(isset($checks))
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Код ответа</th>
+                <th scope="col">h1</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Дата создания</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach ($checks as $check)
+                <tr>
+                    <th scope="row">{{ $check->id }}</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ $check->created_at }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    @endif
 @endsection('content')
