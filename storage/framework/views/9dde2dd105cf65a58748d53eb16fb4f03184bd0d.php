@@ -35,7 +35,7 @@
             <?php $__currentLoopData = $checks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $check): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
                     <th scope="row"><?php echo e($check->id); ?></th>
-                    <td></td>
+                    <td><?php echo e($check->status_code); ?></td>
                     <td></td>
                     <td></td>
                     <td></td>

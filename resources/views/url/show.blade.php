@@ -37,7 +37,7 @@
             @foreach ($checks as $check)
                 <tr>
                     <th scope="row">{{ $check->id }}</th>
-                    <td></td>
+                    <td>{{ $check->status_code }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
