@@ -38,9 +38,9 @@
                 <tr>
                     <th scope="row">{{ $check->id }}</th>
                     <td>{{ $check->status_code }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ $check->h1 }}</td>
+                    <td>{{ $check->title }}</td>
+                    <td>{{ $check->description }}</td>
                     <td>{{ $check->created_at }}</td>
                 </tr>
             @endforeach

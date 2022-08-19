@@ -36,9 +36,9 @@
                 <tr>
                     <th scope="row"><?php echo e($check->id); ?></th>
                     <td><?php echo e($check->status_code); ?></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><?php echo e($check->h1); ?></td>
+                    <td><?php echo e($check->title); ?></td>
+                    <td><?php echo e($check->description); ?></td>
                     <td><?php echo e($check->created_at); ?></td>
                 </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -16,11 +16,15 @@ class UrlController extends Controller
      */
     public function index()
     {
-        $urls = DB::table('urls')
+//        $urls = DB::table('urls')
+//            ->select('*')
+//            ->get();
+
+        $urlChecks = DB::table('url_checks')
             ->select('*')
             ->get();
 
-        return view('url.index', ['urls' => $urls->all()]);
+        return view('url.index', ['urls' => $urls->all(), 'url_checks' => $urlChecks->all()]);
     }
 
     /**
