@@ -16,14 +16,31 @@ class CheckControllerTest extends TestCase
 
     public function testAddCheck()
     {
-        DB::table('urls')
+        $id = DB::table('urls')
             ->insertGetId([
-                'name' =>  'http://example.com/',
+                'name' =>  'http://laravel.com',
                 'created_at' => Carbon::now('+03:00'),
             ]);
 
-        Http::fake([
+        $content = <<<CODE
+        <html>
+          <head>
+            <title>Href Attribute Example</title>
+          </head>
+          <body>
+            <h1>Href Attribute Example</h1>
+            <p>
+              <a href="https://www.freecodecamp.org/contribute/">The freeCodeCamp Contribution Page</a> shows you how and where you can contribute to freeCodeCamp's community and growth.
+            </p>
+          </body>
+        </html>
+        CODE;
 
+        Http::fake([
+            'http://example.com' => Http::response($content, 200),
         ]);
+
+        $response = $this->post("urls/{$id}/checks", [$id]);
+        $response->assertOk();
     }
 }
