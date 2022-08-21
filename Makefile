@@ -6,7 +6,7 @@ validate:
 	composer validate
 
 lint:
-	composer exec phpcs -- --standard=PSR12 src bin
+	composer exec phpcs -- --standard=PSR12 app
 
 lint-fix:
 	composer exec --verbose phpcbf -- --standard=PSR12 src tests
