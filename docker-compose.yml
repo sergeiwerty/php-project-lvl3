@@ -25,6 +25,7 @@ services:
     env_file:
       - ./pgsql.env
     environment:
+      DB_HOST: pgsql
       POSTGRES_USER: homestead
       POSTGRES_PASSWORD: secret
       POSTGRES_DB: homestead

@@ -4,10 +4,7 @@ namespace Tests\Feature;
 
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class UrlControllerTest extends TestCase

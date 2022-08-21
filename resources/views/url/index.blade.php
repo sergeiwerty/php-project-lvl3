@@ -15,8 +15,8 @@
             <tr>
                 <th scope="row">{{ $url->id }}</th>
                 <td>{{ $url->name }}</td>
-                <td></td>
-                <td></td>
+                <td>{{ is_null($url->check) ? '' : $url->check->created_at }}</td>
+                <td>{{ is_null($url->check) ? '' : $url->check->status_code }}</td>
             </tr>
         @endforeach
         </tbody>

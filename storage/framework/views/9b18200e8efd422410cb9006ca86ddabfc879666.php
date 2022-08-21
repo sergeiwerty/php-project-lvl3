@@ -13,8 +13,8 @@
             <tr>
                 <th scope="row"><?php echo e($url->id); ?></th>
                 <td><?php echo e($url->name); ?></td>
-                <td></td>
-                <td></td>
+                <td><?php echo e(is_null($url->check) ? '' : $url->check->created_at); ?></td>
+                <td><?php echo e(is_null($url->check) ? '' : $url->check->status_code); ?></td>
             </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
