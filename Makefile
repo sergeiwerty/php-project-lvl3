@@ -12,7 +12,6 @@ setup:
 	php artisan migrate
 	npm ci
 	npm run build
-	make ide-helper
 
 install:
 	composer install
@@ -31,10 +30,3 @@ test:
 
 test-coverage:
 	XDEBUG_MODE=coverage php artisan test --coverage-clover build/logs/clover.xml
-
-
-ide-helper:
-	php artisan ide-helper:eloquent
-	php artisan ide-helper:gen
-	php artisan ide-helper:meta
-	php artisan ide-helper:mod -n
