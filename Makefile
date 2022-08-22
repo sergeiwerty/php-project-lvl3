@@ -8,7 +8,6 @@ setup:
 	make install
 	cp -n .env.example .env
 	php artisan key:gen --ansi
-	php artisan config:cache --env=testing
 	touch database/database.sqlite
 	php artisan migrate
 	npm ci
