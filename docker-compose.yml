@@ -52,3 +52,5 @@ services:
     volumes:
       - .:/var/www/html
 
+volumes:
+  postgres-data1:
