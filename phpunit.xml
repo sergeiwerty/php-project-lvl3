@@ -27,5 +27,10 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="APP_NAME" value="Laravel"/>
+        <env name="APP_KEY" value="base64:mNhKl01v675u4D7hOJX44nMxrfKzPBUYaaRWrTpLImU="/>
+        <env name="APP_DEBUG" value="true"/>
+        <env name="APP_URL" value="http://localhost"/>
+
     </php>
 </phpunit>
