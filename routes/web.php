@@ -20,4 +20,5 @@ Route::get('/', function () {
 
 Route::resource('urls', UrlController::class);
 
-Route::post('urls/{id}/checks', [CheckController::class, 'addCheck']);
+//Route::post('urls/{id}/checks', [CheckController::class, 'addCheck']);
+Route::resource('urls.checks', CheckController::class);

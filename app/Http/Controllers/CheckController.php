@@ -11,7 +11,7 @@ use DiDom\Query;
 
 class CheckController extends Controller
 {
-    public function addCheck(Request $request, $id)
+    public function store(Request $request, $id)
     {
         $urlName = DB::table('urls')
             ->select('name')
@@ -59,6 +59,6 @@ class CheckController extends Controller
             ->where('id', '=', $id)
             ->get();
 
-        return view('urls.show', ['urlData' => $urlData->first(), 'checks' => $checkData->all()]);
+        return view('url.show', ['urlData' => $urlData->first(), 'checks' => $checkData->all()]);
     }
 }
