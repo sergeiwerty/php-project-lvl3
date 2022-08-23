@@ -41,6 +41,6 @@ class CheckControllerTest extends TestCase
         ]);
 
         $response = $this->post("urls/{$id}/checks", [$id]);
-        $response->assertOk();
+        $response->assertStatus(302);
     }
 }

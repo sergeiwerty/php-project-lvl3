@@ -49,16 +49,17 @@ class CheckController extends Controller
                 'created_at' => Carbon::now('+03:00'),
             ]);
 
-        $checkData = DB::table('url_checks')
-            ->select('*')
-            ->where('url_id', '=', $id)
-            ->get();
+//        $checkData = DB::table('url_checks')
+//            ->select('*')
+//            ->where('url_id', '=', $id)
+//            ->get();
 
-        $urlData = DB::table('urls')
-            ->select('*')
-            ->where('id', '=', $id)
-            ->get();
+//        $urlData = DB::table('urls')
+//            ->select('*')
+//            ->where('id', '=', $id)
+//            ->get();
 
-        return view('url.show', ['urlData' => $urlData->first(), 'checks' => $checkData->all()]);
+//        return view('url.show', ['urlData' => $urlData->first(), 'checks' => $checkData->all()]);
+        return redirect()->route('urls.show', ['url' => $id]);
     }
 }

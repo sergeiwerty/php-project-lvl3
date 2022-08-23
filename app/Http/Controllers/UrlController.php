@@ -45,7 +45,15 @@ class UrlController extends Controller
 
         if (DB::table('urls')->where('name', '=', $normalizedUrl)->exists()) {
             flash('Введённый URL уже существует.')->info();
-            return redirect(route('urls.show', DB::table('urls')->where('name', '=', $normalizedUrl)->get()->first()->id));
+            return redirect(
+                route(
+                    'urls.show',
+                    DB::table('urls')
+                    ->where('name', '=', $normalizedUrl)
+                    ->get()
+                    ->first()->id
+                )
+            );
         }
 
         $request->validate([
@@ -81,6 +89,11 @@ class UrlController extends Controller
             ->where('id', '=', $id)
             ->get();
 
-        return view('url.show', ['urlData' => $urlData->first()]);
+        $checkData = DB::table('url_checks')
+            ->select('*')
+            ->where('url_id', '=', $id)
+            ->get();
+
+        return view('url.show', ['urlData' => $urlData->first(), 'checks' => $checkData->all()]);
     }
 }
