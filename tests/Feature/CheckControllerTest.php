@@ -37,7 +37,7 @@ class CheckControllerTest extends TestCase
         CODE;
 
         Http::fake([
-            'http://example.com' => Http::response($content, 200),
+            'http://laravel.com' => Http::response($content, 200),
         ]);
 
         $response = $this->post("urls/{$id}/checks", [$id]);

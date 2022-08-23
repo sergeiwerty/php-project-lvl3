@@ -59,6 +59,6 @@ class CheckController extends Controller
             ->where('id', '=', $id)
             ->get();
 
-        return view('url.show', ['urlData' => $urlData->first(), 'checks' => $checkData->all()]);
+        return view('urls.show', ['urlData' => $urlData->first(), 'checks' => $checkData->all()]);
     }
 }
