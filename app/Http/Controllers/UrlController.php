@@ -40,18 +40,21 @@ class UrlController extends Controller
      */
     public function store(Request $request)
     {
+        $uri = $request->input('url.name');
+        $normalizedUrl = strtolower(parse_url($uri, PHP_URL_SCHEME) . '://' . parse_url($uri, PHP_URL_HOST));
+
+        if (DB::table('urls')->where('name', '=', $normalizedUrl)->exists()) {
+            flash('Введённый URL уже существует.')->info();
+            return redirect(route('urls.show', DB::table('urls')->where('name', '=', $normalizedUrl)->get()->first()->id));
+        }
 
         $request->validate([
             'url.name' => 'url|required|max:255|unique:urls,name'
         ], [
             'url.name.url' => 'Введённый URL невалиден',
             'url.name.required' => 'Поле обязательно для заполнения',
-            'url.name.unique' => 'Введённый URL уже существует',
             'url.name.max:255' => 'Превышена максимальная длина в 255 символов',
         ]);
-
-        $uri = $request->input('url.name');
-        $normalizedUrl = strtolower(parse_url($uri, PHP_URL_SCHEME) . '://' . parse_url($uri, PHP_URL_HOST));
 
         $id = DB::table('urls')
             ->insertGetId([
