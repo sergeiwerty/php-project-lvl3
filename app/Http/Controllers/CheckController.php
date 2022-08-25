@@ -19,20 +19,28 @@ class CheckController extends Controller
             ->get()
             ->first();
 
+        dump($urlName);
+
         $status = Http::get($urlName->name)->status();
 
         $document = new Document($urlName->name, true);
 
         if ($document->has('h1')) {
             $h1 = $document->first('h1');
+        } else {
+            $h1 = null;
         }
 
         if ($document->has('title')) {
             $title = $document->first('title');
+        } else {
+            $title = null;
         }
 
         if ($document->has('meta[name="description"][content]')) {
             $metaContent = $document->first('meta[name="description"][content]');
+        } else {
+            $metaContent = null;
         }
 
         $h1Text = optional($h1)->text();
