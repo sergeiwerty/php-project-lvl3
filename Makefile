@@ -13,6 +13,7 @@ setup:
 	php artisan db:seed
 	npm ci
 	npm run build
+	npm vite build
 
 install:
 	composer install
