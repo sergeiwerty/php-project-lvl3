@@ -13,6 +13,9 @@ class CheckController extends Controller
 {
     public function store(Request $request, $id)
     {
+        $url = DB::table('urls')->find($id);
+        abort_unless($url, 404);
+
         try {
             $urlName = DB::table('urls')
                 ->select('name')
