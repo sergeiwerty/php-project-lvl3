@@ -67,7 +67,7 @@ class UrlController extends Controller
         $id = DB::table('urls')
             ->insertGetId([
                 'name' =>  $normalizedUrl,
-                'created_at' => Carbon::now('+03:00'),
+                'created_at' => Carbon::now(),
             ]);
 
         if ($id !== null) {
