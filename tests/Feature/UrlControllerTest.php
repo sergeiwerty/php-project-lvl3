@@ -23,7 +23,7 @@ class UrlControllerTest extends TestCase
         $id = DB::table('urls')
             ->insertGetId([
                 'name' =>  'http://example.com/',
-                'created_at' => Carbon::now('+03:00'),
+                'created_at' => Carbon::now(),
             ]);
 
         $urlData = DB::table('urls')
@@ -48,7 +48,7 @@ class UrlControllerTest extends TestCase
         $id = DB::table('urls')
             ->insertGetId([
                 'name' =>  'http://example.com/',
-                'created_at' => Carbon::now('+03:00'),
+                'created_at' => Carbon::now(),
             ]);
 
         $urlData = DB::table('urls')

@@ -25,13 +25,12 @@ class CheckControllerTest extends TestCase
         $content = <<<CODE
         <html lang='en'>
             <head>
-                <title>Awesome page</title>
-                <meta name="description" content="Statements of great people">
-                <title>Test page</title>
+                <meta name="description" content="Laravel is a PHP web application framework with expressive, elegant syntax. We’ve already laid the foundation — freeing you to create without sweating the small things.">
+                <title>Laravel - The PHP Framework For Web Artisans</title>
             </head>
             <body>
                 <div>
-                    <h1>Do not expect a miracle, miracles yourself!</h1>
+                    <h1>The PHP Framework for Web Artisans</h1>
                 </div>
             </body>
         </html>
@@ -43,5 +42,15 @@ class CheckControllerTest extends TestCase
 
         $response = $this->post("urls/{$id}/checks", [$id]);
         $response->assertStatus(302);
+
+        $checkData = [
+            'url_id' => $id,
+            'status_code' => '200',
+            'title' => 'Laravel - The PHP Framework For Web Artisans',
+            'description' => 'Laravel is a PHP web application framework with expressive, elegant syntax. We’ve already laid the foundation — freeing you to create without sweating the small things.',
+            'h1' => 'The PHP Framework for Web Artisans',
+            'created_at' => Carbon::now()
+        ];
+        $this->assertDatabaseHas('url_checks', $checkData);
     }
 }
