@@ -56,7 +56,7 @@ class CheckController extends Controller
                     'h1' => $h1Text,
                     'title' => $titleText,
                     'description' => $metaContentText,
-                    'created_at' => Carbon::now('+03:00'),
+                    'created_at' => Carbon::now(),
                 ]);
         } catch (\Exception $exception) {
             flash($exception->getMessage())->error();
