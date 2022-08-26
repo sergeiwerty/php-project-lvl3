@@ -23,6 +23,7 @@ class CheckControllerTest extends TestCase
             ]);
 
         $content = <<<CODE
+        <!doctype html>
         <html lang='en'>
             <head>
                 <meta name="description" content="Laravel is a PHP web application framework with expressive, elegant syntax. We’ve already laid the foundation — freeing you to create without sweating the small things.">
@@ -37,7 +38,7 @@ class CheckControllerTest extends TestCase
         CODE;
 
         Http::fake([
-            'http://laravel.com' => Http::response($content, 200),
+            '*' => Http::response($content, 200),
         ]);
 
         $response = $this->post("urls/{$id}/checks", [$id]);
@@ -45,10 +46,10 @@ class CheckControllerTest extends TestCase
 
         $checkData = [
             'url_id' => $id,
-            'status_code' => '200',
-            'title' => 'Laravel - The PHP Framework For Web Artisans',
-            'description' => 'Laravel is a PHP web application framework with expressive, elegant syntax. We’ve already laid the foundation — freeing you to create without sweating the small things.',
-            'h1' => 'The PHP Framework for Web Artisans',
+            'status_code' => 200,
+            'title' => 'Awesome page',
+            'description' => 'Statements of great people',
+            'h1' => 'Do not expect a miracle, miracles yourself!',
             'created_at' => Carbon::now()
         ];
         $this->assertDatabaseHas('url_checks', $checkData);
