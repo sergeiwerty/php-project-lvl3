@@ -63,18 +63,6 @@ class CheckController extends Controller
             return back();
         }
 
-
-//        $checkData = DB::table('url_checks')
-//            ->select('*')
-//            ->where('url_id', '=', $id)
-//            ->get();
-
-//        $urlData = DB::table('urls')
-//            ->select('*')
-//            ->where('id', '=', $id)
-//            ->get();
-
-//        return view('url.show', ['urlData' => $urlData->first(), 'checks' => $checkData->all()]);
         return redirect()->route('urls.show', ['url' => $id]);
     }
 }

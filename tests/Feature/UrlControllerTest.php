@@ -9,7 +9,6 @@ use Tests\TestCase;
 
 class UrlControllerTest extends TestCase
 {
-
     use RefreshDatabase;
 
     public function testIndex()
