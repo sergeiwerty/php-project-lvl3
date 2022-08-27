@@ -21,7 +21,7 @@ validate:
 	composer validate
 
 lint:
-	composer exec --verbose phpstan -- --level=8 analyse app routes tests database
+	composer exec --verbose phpstan -- --level=6 analyse app tests database
 	composer exec phpcs -- --standard=PSR12 app
 
 lint-fix:

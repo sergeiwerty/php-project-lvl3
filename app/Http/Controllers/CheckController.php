@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use DiDom\Document;
-use DiDom\Query;
+use Illuminate\Routing\Redirector;
 
 class CheckController extends Controller
 {
