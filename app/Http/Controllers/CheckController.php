@@ -23,9 +23,9 @@ class CheckController extends Controller
                 ->get()
                 ->first();
 
-            $status = Http::get($urlName->name)->status();
-
-            $document = new Document($urlName->name, true);
+            $response = Http::get($urlName->name);
+            $status = $response->status();
+            $document = new Document($response->body());
 
             if ($document->has('h1')) {
                 $h1 = $document->first('h1');

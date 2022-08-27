@@ -26,7 +26,7 @@ class CheckControllerTest extends TestCase
         <!doctype html>
         <html lang='en'>
             <head>
-                <meta name="description" content="Laravel is a PHP web application framework with expressive, elegant syntax. We’ve already laid the foundation — freeing you to create without sweating the small things.">
+                <meta name="description" content="Laravel is a PHP web application framework with expressive syntax.">
                 <title>Laravel - The PHP Framework For Web Artisans</title>
             </head>
             <body>
@@ -47,11 +47,12 @@ class CheckControllerTest extends TestCase
         $checkData = [
             'url_id' => $id,
             'status_code' => 200,
-            'title' => 'Awesome page',
-            'description' => 'Statements of great people',
-            'h1' => 'Do not expect a miracle, miracles yourself!',
+            'title' => 'Laravel - The PHP Framework For Web Artisans',
+            'description' => 'Laravel is a PHP web application framework with expressive syntax.',
+            'h1' => 'The PHP Framework for Web Artisans',
             'created_at' => Carbon::now()
         ];
+
         $this->assertDatabaseHas('url_checks', $checkData);
     }
 }

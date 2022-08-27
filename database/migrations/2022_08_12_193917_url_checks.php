@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('url_checks', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('url_id');
+            $table->unsignedBigInteger('url_id');
             $table->foreign('url_id')->references('id')->on('urls');
             $table->integer('status_code')->nullable();
             $table->text('h1')->nullable();
