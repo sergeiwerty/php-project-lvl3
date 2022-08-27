@@ -11,13 +11,13 @@ class UrlControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $response = $this->get(route('urls.index'));
         $response->assertStatus(200);
     }
 
-    public function testStore()
+    public function testStore(): void
     {
         $id = DB::table('urls')
             ->insertGetId([
@@ -42,7 +42,7 @@ class UrlControllerTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $id = DB::table('urls')
             ->insertGetId([

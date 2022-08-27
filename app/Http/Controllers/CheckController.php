@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -11,7 +12,12 @@ use DiDom\Query;
 
 class CheckController extends Controller
 {
-    public function store(Request $request, $id)
+    /**
+     * @param  Request  $request
+     * @param  int  $id
+     * @return RedirectResponse
+     */
+    public function store(Request $request, int $id): RedirectResponse
     {
         $url = DB::table('urls')->find($id);
         abort_unless($url, 404);

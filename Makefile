@@ -21,10 +21,11 @@ validate:
 	composer validate
 
 lint:
+	composer exec --verbose phpstan -- --level=8 analyse app routes tests database
 	composer exec phpcs -- --standard=PSR12 app
 
 lint-fix:
-	composer exec --verbose phpcbf -- --standard=PSR12 src tests
+	composer exec --verbose phpcbf -- --standard=PSR12 app routes tests database lang
 
 test:
 	php artisan test

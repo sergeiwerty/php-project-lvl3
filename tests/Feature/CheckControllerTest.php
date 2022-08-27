@@ -12,9 +12,10 @@ class CheckControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-
-
-    public function testAddCheck()
+    /**
+     * @return void
+     */
+    public function testAddCheck(): void
     {
         $id = DB::table('urls')
             ->insertGetId([
