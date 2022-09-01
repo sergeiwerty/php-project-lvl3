@@ -42,7 +42,7 @@ class UrlControllerTest extends TestCase
             ]);
 
         /**
-         * @var object $urlData
+         * @var mixed $urlData
          */
         $urlData = DB::table('urls')
             ->where('id', '=', $id)
