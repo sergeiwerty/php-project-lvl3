@@ -21,7 +21,7 @@ class CheckController extends Controller
         abort_unless($url, 404);
 
         /**
-         * @var stdClass $urlName
+         * @var object $urlName
          */
             $urlName = DB::table('urls')
                 ->select('name')

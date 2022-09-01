@@ -46,12 +46,17 @@ class UrlController extends Controller
 
         if (DB::table('urls')->where('name', '=', $normalizedUrl)->exists()) {
             flash('Введённый URL уже существует.')->info();
+
+            /**
+             * @var object $id
+             */
+            $id = DB::table('urls')
+                ->where('name', '=', $normalizedUrl)
+                ->first();
             return redirect(
                 route(
                     'urls.show',
-                    DB::table('urls')
-                    ->where('name', '=', $normalizedUrl)
-                    ->first()->id
+                    $id->id
                 )
             );
         }
