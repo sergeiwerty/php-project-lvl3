@@ -87,7 +87,7 @@ class UrlController extends Controller
      * @param  int  $id
      * @return Application|Factory|View
      */
-    public function show($id)
+    public function show(int $id): View|Factory|Application
     {
         /**
          * @var object $urlData
