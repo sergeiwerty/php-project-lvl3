@@ -3,18 +3,12 @@
 namespace Tests\Feature;
 
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 class CheckControllerTest extends TestCase
 {
-    use RefreshDatabase;
-
-    /**
-     * @return void
-     */
     public function testAddCheck(): void
     {
         $id = DB::table('urls')

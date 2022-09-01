@@ -26,7 +26,6 @@ class CheckController extends Controller
             $urlName = DB::table('urls')
                 ->select('name')
                 ->where('id', '=', $id)
-                ->get()
                 ->first();
 
             $response = Http::get($urlName->name);

@@ -20,7 +20,6 @@ class UrlController extends Controller
     public function index(): Application|Factory|View
     {
         $urls = DB::table('urls')
-            ->select('*')
             ->get();
 
         foreach ($urls as $url) {
@@ -53,7 +52,6 @@ class UrlController extends Controller
                     'urls.show',
                     DB::table('urls')
                     ->where('name', '=', $normalizedUrl)
-                    ->get()
                     ->first()->id
                 )
             );
@@ -88,12 +86,10 @@ class UrlController extends Controller
     public function show($id)
     {
         $urlData = DB::table('urls')
-            ->select('*')
             ->where('id', '=', $id)
             ->get();
 
         $checkData = DB::table('url_checks')
-            ->select('*')
             ->where('url_id', '=', $id)
             ->get();
 
