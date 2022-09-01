@@ -94,12 +94,13 @@ class UrlController extends Controller
          */
         $urlData = DB::table('urls')
             ->where('id', '=', $id)
-            ->get();
+            ->get()
+            ->first();
 
         $checkData = DB::table('url_checks')
             ->where('url_id', '=', $id)
             ->get();
 
-        return view('url.show', ['urlData' => $urlData->first(), 'checks' => $checkData->all()]);
+        return view('url.show', ['urlData' => $urlData, 'checks' => $checkData->all()]);
     }
 }
