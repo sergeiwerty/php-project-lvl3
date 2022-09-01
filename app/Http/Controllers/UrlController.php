@@ -35,10 +35,8 @@ class UrlController extends Controller
 
 
     /**
-     * Store a newly created resource in storage.
-     *
      * @param  Request  $request
-     * @return RedirectResponse
+     * @return Application|RedirectResponse|\Illuminate\Routing\Redirector|void
      */
     public function store(Request $request)
     {
