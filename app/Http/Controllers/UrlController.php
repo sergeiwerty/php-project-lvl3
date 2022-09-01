@@ -94,7 +94,6 @@ class UrlController extends Controller
          */
         $urlData = DB::table('urls')
             ->where('id', '=', $id)
-            ->get()
             ->first();
 
         $checkData = DB::table('url_checks')
