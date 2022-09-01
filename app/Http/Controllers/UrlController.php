@@ -89,6 +89,9 @@ class UrlController extends Controller
      */
     public function show($id)
     {
+        /**
+         * @var object $urlData
+         */
         $urlData = DB::table('urls')
             ->where('id', '=', $id)
             ->get();
