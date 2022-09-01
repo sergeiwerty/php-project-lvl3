@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
@@ -42,6 +41,9 @@ class UrlControllerTest extends TestCase
                 'created_at' => Carbon::now(),
             ]);
 
+        /**
+         * @var object $urlData
+         */
         $urlData = DB::table('urls')
             ->where('id', '=', $id)
             ->first();
