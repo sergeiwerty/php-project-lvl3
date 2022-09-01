@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use DiDom\Document;
+use stdClass;
 
 class CheckController extends Controller
 {
@@ -19,13 +20,15 @@ class CheckController extends Controller
         $url = DB::table('urls')->find($id);
         abort_unless($url, 404);
 
-        try {
+        /**
+         * @var stdClass $urlName
+         */
             $urlName = DB::table('urls')
                 ->select('name')
                 ->where('id', '=', $id)
                 ->first();
-//            dd(Http::get($urlName));
 
+        try {
             $response = Http::get($urlName->name);
             $status = $response->status();
             $document = new Document($response->body());

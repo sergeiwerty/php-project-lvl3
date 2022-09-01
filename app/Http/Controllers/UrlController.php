@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 
 class UrlController extends Controller
@@ -36,7 +37,7 @@ class UrlController extends Controller
 
     /**
      * @param  Request  $request
-     * @return Application|RedirectResponse|\Illuminate\Routing\Redirector|void
+     * @return Application|RedirectResponse|Redirector|void
      */
     public function store(Request $request)
     {
