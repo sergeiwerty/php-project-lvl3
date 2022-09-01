@@ -50,6 +50,11 @@ class UrlControllerTest extends TestCase
 
         $response = $this->get(route('urls.show', ['url' => $urlData->id]));
         $response->assertOk();
-        $response->assertSee($urlData->name);
+
+        /**
+         * @var string $name
+         */
+        $name = $urlData->name;
+        $response->assertSee($name);
     }
 }
