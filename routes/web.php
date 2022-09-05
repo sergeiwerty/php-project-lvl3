@@ -18,7 +18,11 @@ Route::get('/', function () {
 //Route::post('/urls', [UrlController::class, store])
 //    ->name();
 
-Route::resource('urls', UrlController::class);
+Route::resource('urls', UrlController::class)->only([
+    'index', 'store', 'show'
+]);
 
 //Route::post('urls/{id}/checks', [CheckController::class, 'addCheck']);
-Route::resource('urls.checks', CheckController::class);
+Route::resource('urls.checks', CheckController::class)->only([
+    'store'
+])->shallow();

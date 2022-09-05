@@ -11,33 +11,21 @@ class CheckControllerTest extends TestCase
 {
     public function testAddCheck(): void
     {
+        $created_at = Carbon::now();
         $id = DB::table('urls')
             ->insertGetId([
                 'name' =>  'http://laravel.com',
-                'created_at' => Carbon::now(),
+                'created_at' => $created_at,
             ]);
 
-        $content = <<<CODE
-        <!doctype html>
-        <html lang='en'>
-            <head>
-                <meta name="description" content="Laravel is a PHP web application framework with expressive syntax.">
-                <title>Laravel - The PHP Framework For Web Artisans</title>
-            </head>
-            <body>
-                <div>
-                    <h1>The PHP Framework for Web Artisans</h1>
-                </div>
-            </body>
-        </html>
-        CODE;
+        $content = trim(file_get_contents(__DIR__ . "/../fixtures/" . "example.html"));
 
         Http::fake([
             '*' => Http::response($content, 200),
         ]);
 
-        $response = $this->post("urls/{$id}/checks", [$id]);
-        $response->assertStatus(302);
+        $response = $this->post(route('urls.checks.store', [$id]));
+        $response->assertRedirect();
 
         $checkData = [
             'url_id' => $id,
@@ -45,7 +33,7 @@ class CheckControllerTest extends TestCase
             'title' => 'Laravel - The PHP Framework For Web Artisans',
             'description' => 'Laravel is a PHP web application framework with expressive syntax.',
             'h1' => 'The PHP Framework for Web Artisans',
-            'created_at' => Carbon::now()
+            'created_at' => $created_at
         ];
 
         $this->assertDatabaseHas('url_checks', $checkData);
