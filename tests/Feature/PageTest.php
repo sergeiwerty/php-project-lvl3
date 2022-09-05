@@ -15,7 +15,7 @@ class PageTest extends TestCase
      */
     public function testMainPage()
     {
-        $response = $this->get('/');
+        $response = $this->get(route('welcome'));
         $view = $this->view('welcome');
 
         $response->assertStatus(200);
