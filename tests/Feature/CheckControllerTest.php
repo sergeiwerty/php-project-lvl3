@@ -18,7 +18,7 @@ class CheckControllerTest extends TestCase
                 'created_at' => $created_at,
             ]);
 
-        $content = trim(file_get_contents(__DIR__ . "/../fixtures/" . "example.html"));
+        $content = file_get_contents(__DIR__ . "/../fixtures/" . "example.html");
 
         Http::fake([
             '*' => Http::response($content, 200),
