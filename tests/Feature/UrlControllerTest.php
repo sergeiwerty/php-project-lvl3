@@ -8,7 +8,6 @@ use Tests\TestCase;
 
 class UrlControllerTest extends TestCase
 {
-
     /**
      * @var array<string>
      */
