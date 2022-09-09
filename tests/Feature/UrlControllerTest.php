@@ -8,6 +8,23 @@ use Tests\TestCase;
 
 class UrlControllerTest extends TestCase
 {
+
+    /**
+     * @var array<string>
+     */
+    protected $urlDataSet;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $createdAt = Carbon::now();
+        $this->urlDataSet = [
+            'name' =>  'http://example.com/',
+            'created_at' => $createdAt,
+        ];
+    }
+
     public function testIndex(): void
     {
         $response = $this->get(route('urls.index'));
@@ -17,12 +34,12 @@ class UrlControllerTest extends TestCase
     public function testStore(): void
     {
         DB::table('urls')
-            ->insert([
-                'name' =>  'http://example.com/',
-                'created_at' => Carbon::now(),
-            ]);
+            ->insert($this->urlDataSet);
 
-        $this->assertDatabaseCount('urls', 1);
+        $this->assertDatabaseHas('urls', [
+            'name' =>  'http://example.com/',
+            'created_at' => $this->urlDataSet['created_at'],
+        ]);
 
         $response = $this->post(
             route('urls.store'),
@@ -36,10 +53,7 @@ class UrlControllerTest extends TestCase
     public function testShow(): void
     {
         $id = DB::table('urls')
-            ->insertGetId([
-                'name' =>  'http://example.com/',
-                'created_at' => Carbon::now(),
-            ]);
+            ->insertGetId($this->urlDataSet);
 
         /**
          * @var mixed $urlData
@@ -48,7 +62,7 @@ class UrlControllerTest extends TestCase
             ->where('id', '=', $id)
             ->first();
 
-        $response = $this->get(route('urls.show', ['url' => $urlData->id]));
+        $response = $this->get(route('urls.show', ['url' => $id]));
         $response->assertOk();
 
         $response->assertSee($urlData->name);
