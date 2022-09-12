@@ -1,5 +1,6 @@
 <?php $__env->startSection('content'); ?>
-    <table class="table">
+    <h1 class="mt-5 mb-3">Сайты</h1>
+    <table class="table border">
         <thead>
         <tr>
             <th scope="col">ID</th>
@@ -12,7 +13,7 @@
         <?php $__currentLoopData = $urls; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $url): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
                 <th scope="row"><?php echo e($url->id); ?></th>
-                <td><?php echo e($url->name); ?></td>
+                <td><a href="<?php echo e(route('urls.show', [$url->id])); ?>"><?php echo e($url->name); ?></a></td>
                 <td><?php echo e(is_null($url->check) ? '' : $url->check->created_at); ?></td>
                 <td><?php echo e(is_null($url->check) ? '' : $url->check->status_code); ?></td>
             </tr>

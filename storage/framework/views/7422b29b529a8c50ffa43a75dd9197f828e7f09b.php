@@ -1,4 +1,5 @@
 <?php $__env->startSection('content'); ?>
+    <h1 class="mt-5 mb-3">Сайт: <?php echo e($urlData->name); ?></h1>
     <table class="table border">
         <tbody>
         <tr>
@@ -14,13 +15,13 @@
         </tr>
         </tbody>
     </table>
-    <h1>Проверки</h1>
-    <form action="/urls/<?php echo e($urlData->id); ?>/checks" method="POST">
+    <h2 class="mt-5">Проверки</h2>
+    <form class="mb-3" action="<?php echo e(route('urls.checks.store', $urlData->id)); ?>" method="POST">
         <?php echo csrf_field(); ?>
         <input class="btn btn-primary" type="submit" value="Запустить проверку">
     </form>
     <?php if(isset($checks)): ?>
-        <table class="table">
+        <table class="table border">
             <thead>
             <tr>
                 <th scope="col">ID</th>

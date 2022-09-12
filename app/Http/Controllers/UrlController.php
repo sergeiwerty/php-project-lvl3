@@ -27,7 +27,6 @@ class UrlController extends Controller
             $url->check = DB::table('url_checks')
                 ->where('url_id', $url->id)
                 ->orderByDesc('created_at')
-                ->limit(1)
                 ->first();
         }
 

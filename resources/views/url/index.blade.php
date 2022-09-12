@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <table class="table">
+    <h1 class="mt-5 mb-3">Сайты</h1>
+    <table class="table border">
         <thead>
         <tr>
             <th scope="col">ID</th>
@@ -14,7 +15,7 @@
         @foreach ($urls as $url)
             <tr>
                 <th scope="row">{{ $url->id }}</th>
-                <td>{{ $url->name }}</td>
+                <td><a href="{{ route('urls.show', [$url->id]) }}">{{ $url->name }}</a></td>
                 <td>{{ is_null($url->check) ? '' : $url->check->created_at }}</td>
                 <td>{{ is_null($url->check) ? '' : $url->check->status_code }}</td>
             </tr>

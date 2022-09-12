@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <h1 class="mt-5 mb-3">Сайт: {{ $urlData->name }}</h1>
     <table class="table border">
         <tbody>
         <tr>
@@ -16,13 +17,13 @@
         </tr>
         </tbody>
     </table>
-    <h1>Проверки</h1>
-    <form action="/urls/{{ $urlData->id }}/checks" method="POST">
+    <h2 class="mt-5">Проверки</h2>
+    <form class="mb-3" action="{{ route('urls.checks.store', $urlData->id) }}" method="POST">
         @csrf
         <input class="btn btn-primary" type="submit" value="Запустить проверку">
     </form>
     @if(isset($checks))
-        <table class="table">
+        <table class="table border">
             <thead>
             <tr>
                 <th scope="col">ID</th>

@@ -17,39 +17,26 @@ class CheckController extends Controller
      */
     public function store(int $id): RedirectResponse
     {
-        $url = DB::table('urls')->find($id);
-        abort_unless($url, 404);
-
         /**
          * @var stdClass $urlName
          */
-            $urlName = DB::table('urls')
-                ->select('name')
-                ->where('id', '=', $id)
-                ->first();
+        $urlName = DB::table('urls')
+            ->select('name')
+            ->where('id', '=', $id)
+            ->first();
+
+        abort_unless(is_object($urlName), 404);
 
         try {
             $response = Http::get($urlName->name);
             $status = $response->status();
             $document = new Document($response->body());
 
-            if ($document->has('h1')) {
-                $h1 = $document->first('h1');
-            } else {
-                $h1 = null;
-            }
-
-            if ($document->has('title')) {
-                $title = $document->first('title');
-            } else {
-                $title = null;
-            }
-
-            if ($document->has('meta[name="description"][content]')) {
-                $metaContent = $document->first('meta[name="description"][content]');
-            } else {
-                $metaContent = null;
-            }
+            $h1 = $document->has('h1') ? $document->first('h1') : null;
+            $title = $document->has('title') ? $title = $document->first('title') : null;
+            $metaContent =
+                $document->has('meta[name="description"][content]') ?
+                    $document->first('meta[name="description"][content]') : null;
 
             $h1Text = optional($h1)->text();
             $titleText = optional($title)->text();
