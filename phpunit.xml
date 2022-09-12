@@ -15,6 +15,10 @@
         </include>
         <exclude>
             <directory>./app/Http/Middleware</directory>
+            <directory>./app/Models</directory>
+            <file>./app/Http/Controllers/Controller.php</file>
+            <file>./app/Providers/AppServiceProvider.php</file>
+            <file>./app/Providers/BroadcastServiceProvider.php</file>
             <file>./app/Http/Kernel.php</file>
         </exclude>
     </coverage>
