@@ -8,5 +8,3 @@ engines:
     enabled: true
   phpmd:
     enabled: true
-  exclude_patterns:
-  - "app/Http/Middleware/"
