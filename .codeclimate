@@ -9,4 +9,4 @@ engines:
   phpmd:
     enabled: true
   exclude_patterns:
-  - "app/Http/Middleware"
+  - "app/Http/Middleware/"
