@@ -15,6 +15,7 @@
         </include>
         <exclude>
             <directory>./app/Http/Middleware</directory>
+            <file>./app/Http/Kernel.php</file>
         </exclude>
     </coverage>
     <php>
