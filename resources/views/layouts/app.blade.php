@@ -31,6 +31,6 @@
         @yield('content')
     </div>
 </div>
-<script type="module" src="../js/ap.js"></script>
+<script type="module" src="../../js/app.js"></script>
 </body>
 </html>
