@@ -13,6 +13,11 @@ class UrlControllerTest extends TestCase
      */
     protected $urlDataSet;
 
+    /**
+     * @var int
+     */
+    protected $id;
+
     public function setUp(): void
     {
         parent::setUp();
