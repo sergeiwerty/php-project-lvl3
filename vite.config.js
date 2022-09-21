@@ -8,8 +8,8 @@ export default defineConfig({
             'resources/js/app.js',
         ]),
     ],
-    server: {
-        host: '0.0.0.0',
+server: {
+    host: '0.0.0.0',
     },
     resolve: {
         alias: {
