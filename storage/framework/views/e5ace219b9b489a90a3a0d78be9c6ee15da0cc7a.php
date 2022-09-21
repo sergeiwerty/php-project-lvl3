@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-    <div class="col col-md-10 col-lg-8 mx-auto border rounded-3 bg-light p-5">
+    <div class="col col-md-10 col-lg-8 mx-auto border rounded-3 bg-light p-5 mt-3">
         <h1 class="display-3">Анализатор страниц</h1>
         <p for="exampleInputEmail1" class="form-label">Бесплатно проверяйте сайты на SEO пригодность</p>
         <form class="d-flex justify-content-center" action="<?php echo e(route('urls.store')); ?>" method="POST">

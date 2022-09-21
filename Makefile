@@ -1,7 +1,4 @@
 start:
-	php artisan serve --host 0.0.0.0
-
-start-frontend:
 	npm run dev
 
 setup:
@@ -22,7 +19,7 @@ validate:
 
 lint:
 	composer exec --verbose phpstan -- --level=6 analyse app tests database
-	composer exec phpcs -- --standard=PSR12 app
+	composer exec phpcs -- --standard=PSR12 app tests
 
 lint-fix:
 	composer exec --verbose phpcbf -- --standard=PSR12 app routes tests database lang

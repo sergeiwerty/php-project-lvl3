@@ -31,7 +31,6 @@
         <?php echo $__env->yieldContent('content'); ?>
     </div>
 </div>
-
 </body>
 </html>
 <?php /**PATH /var/www/html/resources/views/layouts/app.blade.php ENDPATH**/ ?>

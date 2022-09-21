@@ -22,6 +22,9 @@ class UrlControllerTest extends TestCase
             'name' =>  'http://example.com/',
             'created_at' => $createdAt,
         ];
+
+        $this->id = DB::table('urls')
+                        ->insertGetId($this->urlDataSet);
     }
 
     public function testIndex(): void
@@ -32,8 +35,6 @@ class UrlControllerTest extends TestCase
 
     public function testStore(): void
     {
-        DB::table('urls')
-            ->insert($this->urlDataSet);
 
         $this->assertDatabaseHas('urls', [
             'name' =>  'http://example.com/',
@@ -51,17 +52,14 @@ class UrlControllerTest extends TestCase
 
     public function testShow(): void
     {
-        $id = DB::table('urls')
-            ->insertGetId($this->urlDataSet);
-
         /**
          * @var mixed $urlData
          */
         $urlData = DB::table('urls')
-            ->where('id', '=', $id)
+            ->where('id', '=', $this->id)
             ->first();
 
-        $response = $this->get(route('urls.show', ['url' => $id]));
+        $response = $this->get(route('urls.show', ['url' => $this->id]));
         $response->assertOk();
 
         $response->assertSee($urlData->name);

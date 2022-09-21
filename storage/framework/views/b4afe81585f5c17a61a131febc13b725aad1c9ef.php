@@ -20,7 +20,7 @@
         }
     </style>
 
-    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+    <?php echo app('Illuminate\Foundation\Vite')(['resources/js/app.js']); ?>
 </head>
 <body class="antialiased">
 <header>
@@ -31,7 +31,6 @@
         <?php echo $__env->yieldContent('content'); ?>
     </div>
 </div>
-<script type="module" src="../js/ap.js"></script>
 </body>
 </html>
 <?php /**PATH /home/user/development/php-project-lvl3/php-project-lvl3/resources/views/layouts/app.blade.php ENDPATH**/ ?>
